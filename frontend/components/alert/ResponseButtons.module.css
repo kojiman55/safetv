@@ -1,0 +1,24 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+  width: 100%;
+}
+
+.btn {
+  background: #ffffff;
+  color: #c0392b;
+  font-size: 2em;
+  font-weight: bold;
+  width: 60%;
+  padding: 0.8em 2em;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}

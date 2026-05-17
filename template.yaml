@@ -1,0 +1,100 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Description: MiruTV - 家族向けテレビ型情報ダッシュボード
+
+Globals:
+  Function:
+    Runtime: nodejs20.x
+    Timeout: 30
+    MemorySize: 256
+    Environment:
+      Variables:
+        BUCKET_NAME: !Ref DataBucket
+
+Resources:
+
+  SafeTvApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Cors:
+        AllowMethods: "'GET,OPTIONS'"
+        AllowHeaders: "'Content-Type'"
+        AllowOrigin: "'*'"
+      MethodSettings:
+        - ResourcePath: '/*'
+          HttpMethod: '*'
+          ThrottlingBurstLimit: 10
+          ThrottlingRateLimit: 5
+
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'safetv-data-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  ContentFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: safetv-content
+      Handler: content.handler
+      CodeUri: backend/dist/
+      Description: コンテンツ配信（ニュース・天気・YouTube・アラート）
+      Timeout: 15
+      ReservedConcurrentExecutions: 3
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource: !Sub '${DataBucket.Arn}/*'
+      Events:
+        ContentApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref SafeTvApi
+            Path: /api/content
+            Method: get
+        ContentOptions:
+          Type: Api
+          Properties:
+            RestApiId: !Ref SafeTvApi
+            Path: /api/content
+            Method: options
+
+  AlertFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: safetv-alert
+      Handler: alert.handler
+      CodeUri: backend/dist/
+      Description: 気象庁防災情報チェック（EventBridge 5分ごと）
+      Timeout: 30
+      ReservedConcurrentExecutions: 2
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+                - s3:PutObject
+              Resource: !Sub '${DataBucket.Arn}/*'
+      Events:
+        ScheduledCheck:
+          Type: Schedule
+          Properties:
+            Schedule: rate(5 minutes)
+            Name: safetv-alert-schedule
+            Enabled: true
+
+Outputs:
+  ApiUrl:
+    Description: API Gateway URL
+    Value: !Sub 'https://${SafeTvApi}.execute-api.${AWS::Region}.amazonaws.com/prod'
+  DataBucketName:
+    Description: S3データバケット名
+    Value: !Ref DataBucket

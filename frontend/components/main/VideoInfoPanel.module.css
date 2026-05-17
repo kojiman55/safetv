@@ -1,0 +1,38 @@
+.panel {
+  width: 100%;
+  flex: 1;
+  background: #FEF0E4;
+  padding: 1em 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  overflow: hidden;
+  border-top: 2px solid #EDD5C0;
+}
+
+.channel {
+  font-size: 1em;
+  color: #A85C30;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 1.25em;
+  color: #3D2010;
+  font-weight: bold;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.description {
+  font-size: 1.05em;
+  color: #6B3E20;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #D4845A;
+  height: 8%;
+  padding: 0 2em;
+  flex-shrink: 0;
+}
+
+.left {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5em;
+}
+
+.time {
+  font-size: 3.5em;
+  font-weight: bold;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.date {
+  font-size: 1.8em;
+  color: #FFE8D0;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.area {
+  font-size: 1.8em;
+  color: #FFF0C0;
+}
+
+.appTitle {
+  font-size: 2.2em;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}

@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+backend/dist/
+.aws-sam/
+.env.local
+samconfig.toml
+*.js.map
+*.zip
+frontend/.env.local
