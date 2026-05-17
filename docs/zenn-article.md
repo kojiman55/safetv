@@ -190,4 +190,4 @@ const PREFECTURES = [
 
 次のステップは、このUI基盤の上に家族・施設への連絡機能を乗せることと、Android TVアプリとしてパッケージングすることだ。
 
-リポジトリ: https://github.com/kojiman55/mirutv
+リポジトリ: https://github.com/kojiman55/safetv
