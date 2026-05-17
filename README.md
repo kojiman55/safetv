@@ -145,3 +145,9 @@ npm install && npm run dev
 - [NHK Web API](https://api.nhk.or.jp/)（ニュース）
 - [気象庁 防災情報API](https://www.jma.go.jp/bosai/)（天気予報・アラート）
 - YouTube RSSフィード（各チャンネルの最新動画）
+
+---
+
+## ライセンス
+
+[MIT](LICENSE) © 2026 Koji Okuji
