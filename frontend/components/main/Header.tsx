@@ -11,7 +11,7 @@ export default function Header({ prefecture = '' }: { prefecture?: string }) {
       </div>
       <div className={styles.right}>
         {prefecture && <span className={styles.area}>{prefecture}</span>}
-        <span className={styles.appTitle}>MiruTV</span>
+        <span className={styles.appTitle}>SafeTV</span>
       </div>
     </div>
   )

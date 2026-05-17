@@ -1,8 +1,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'MiruTV',
-  description: '家族で楽しむ、テレビ型情報ステーション',
+  title: 'SafeTV',
+  description: '高齢者家庭向け、テレビで動く防災・生活情報ダッシュボード',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

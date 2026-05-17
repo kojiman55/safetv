@@ -57,4 +57,6 @@ export type Shelter = {
 export type UserProfile = {
   prefecture: string
   areaCode: string
+  city: string
+  cityCode: string
 }
