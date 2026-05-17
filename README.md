@@ -6,7 +6,7 @@
 
 Android TV・Fire TV Stickのブラウザから開くだけで動く。アカウント登録・アプリのインストール不要。
 
-**デモ**: https://mirutv.eggsystems.jp
+**デモ**: https://safetv.eggsystems.jp
 
 ---
 

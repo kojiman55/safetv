@@ -1,5 +1,5 @@
 ---
-title: "テレビを高齢者の防災端末にする、その第一歩を作った"
+title: "スマホを持たない高齢者に、防災情報をテレビで届ける"
 emoji: "📺"
 type: "tech"
 topics: ["nextjs", "lambda", "typescript", "aws", "youtube"]
@@ -16,7 +16,7 @@ published: true
 
 今回作ったのは、その実現に向けたベースとなるデモだ。
 
-デモ: https://mirutv.eggsystems.jp
+デモ: https://safetv.eggsystems.jp
 
 ---
 
